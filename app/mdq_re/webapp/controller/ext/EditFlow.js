@@ -12,12 +12,12 @@ sap.ui.define([
      * @class A controller extension offering CRUD editFlow features as mixin
      * @implements sap.fe.core.controllerextensions.EditFlow
      *
-     * @name udina.sample.mdq_re.controller.ext.EditFlow
+     * @name mdq_re.controller.ext.EditFlow
      * @hideconstructor
      * @public
      * @since 1.2.0
      */
-    return ControllerExtension.extend("udina.sample.mdq_re.controller.ext.EditFlow", {
+    return ControllerExtension.extend("mdq_re.controller.ext.EditFlow", {
 
         metadata: {
             methods: {

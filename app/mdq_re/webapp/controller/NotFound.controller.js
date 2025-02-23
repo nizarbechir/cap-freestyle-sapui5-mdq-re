@@ -1,9 +1,9 @@
 sap.ui.define([
-    "udina/sample/mdq_re/controller/BaseController",
+    "mdq_re/controller/BaseController",
 ], function (BaseController) {
     "use strict";
 
-    return BaseController.extend("udina.sample.mdq_re.controller.NotFound", {
+    return BaseController.extend("mdq_re.controller.NotFound", {
 
         onInit: function () {
             var oRouter, oTarget;

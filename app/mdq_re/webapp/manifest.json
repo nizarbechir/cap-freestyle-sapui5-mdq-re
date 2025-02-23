@@ -1,7 +1,7 @@
 {
     "_version": " 1.49.0",
     "sap.app": {
-        "id": "udina.sample.mdq_re",
+        "id": "mdq_re",
         "type": "application",
         "i18n": {
             "bundleUrl": "i18n/i18n.properties",
@@ -37,7 +37,7 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "UDINASalesOrder",
+                    "semanticObject": "SalesOrder",
                     "action": "manage",
                     "title": "{{flpTitle}}",
                     "subTitle": "{{flpSubTitle}}",
@@ -97,7 +97,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "udina.sample.mdq_re.i18n.i18n",
+                    "bundleName": "mdq_re.i18n.i18n",
                     "supportedLocales": [
                         "",
                         "de",
@@ -121,7 +121,7 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "udina.sample.mdq_re.view",
+                "viewPath": "mdq_re.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
                 "clearControlAggregation": false,
@@ -178,7 +178,7 @@
             }
         },
         "rootView": {
-            "viewName": "udina.sample.mdq_re.view.App",
+            "viewName": "mdq_re.view.App",
             "type": "XML",
             "async": true,
             "id": "App"

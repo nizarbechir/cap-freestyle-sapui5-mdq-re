@@ -1,8 +1,8 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
     "sap/ui/Device",
-    "udina/sample/mdq_re/controller/ErrorHandler",
-    "udina/sample/mdq_re/model/models"
+    "mdq_re/controller/ErrorHandler",
+    "mdq_re/model/models"
 ], function (UIComponent, Device, ErrorHandler, models) {
     "use strict";
 
@@ -25,7 +25,7 @@ sap.ui.define([
         Editable: "Editable"
     };
 
-    return UIComponent.extend("udina.sample.mdq_re.Component", {
+    return UIComponent.extend("mdq_re.Component", {
 
         metadata: {
             manifest: "json"

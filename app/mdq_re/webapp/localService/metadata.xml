@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
     <edmx:DataServices>
-        <Schema Namespace="udina.MockService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        <Schema Namespace="MockService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
             <EntityContainer Name="EntityContainer">
-                <EntitySet Name="SalesOrder" EntityType="udina.MockService.SalesOrder">
+                <EntitySet Name="SalesOrder" EntityType="MockService.SalesOrder">
                     <NavigationPropertyBinding Path="to_Item" Target="SalesOrderItem"/>
                 </EntitySet>
-                <EntitySet Name="SalesOrderItem" EntityType="udina.MockService.SalesOrderItem">
+                <EntitySet Name="SalesOrderItem" EntityType="MockService.SalesOrderItem">
                     <NavigationPropertyBinding Path="to_SalesOrder" Target="SalesOrder"/>
                 </EntitySet>
             </EntityContainer>
@@ -103,7 +103,7 @@
                 <Property Name="RetailAdditionalCustomerGrp8" Type="Edm.String" MaxLength="3"/>
                 <Property Name="RetailAdditionalCustomerGrp9" Type="Edm.String" MaxLength="3"/>
                 <Property Name="RetailAdditionalCustomerGrp10" Type="Edm.String" MaxLength="3"/>
-                <NavigationProperty Name="to_Item" Type="Collection(udina.MockService.SalesOrderItem)"/>
+                <NavigationProperty Name="to_Item" Type="Collection(MockService.SalesOrderItem)"/>
             </EntityType>
             <EntityType Name="SalesOrderItem">
                 <Key>
@@ -212,7 +212,7 @@
                 <Property Name="CrossPlantConfigurableProduct" Type="Edm.String" MaxLength="40"/>
                 <Property Name="ProductCategory" Type="Edm.String" MaxLength="2"/>
                 <Property Name="RequirementSegment" Type="Edm.String" MaxLength="40"/>
-                <NavigationProperty Name="to_SalesOrder" Type="udina.MockService.SalesOrder"/>
+                <NavigationProperty Name="to_SalesOrder" Type="MockService.SalesOrder"/>
             </EntityType>
         </Schema>
     </edmx:DataServices>

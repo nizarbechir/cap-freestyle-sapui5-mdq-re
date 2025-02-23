@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (Object, MessageBox) {
     "use strict";
 
-    return Object.extend("udina.sample.mdq_re.controller.ErrorHandler", {
+    return Object.extend("mdq_re.controller.ErrorHandler", {
 
         /**
          * Handles application errors by automatically attaching to the model events and displaying errors when needed.

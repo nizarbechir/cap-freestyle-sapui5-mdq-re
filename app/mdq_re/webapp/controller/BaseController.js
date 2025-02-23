@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (Controller, History) {
     "use strict";
 
-    return Controller.extend("udina.sample.mdq_re.controller.BaseController", {
+    return Controller.extend("mdq_re.controller.BaseController", {
 
         _oAppComponent: undefined,
 

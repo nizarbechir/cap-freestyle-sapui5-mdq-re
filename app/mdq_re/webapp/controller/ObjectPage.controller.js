@@ -1,9 +1,9 @@
 sap.ui.define([
-    "udina/sample/mdq_re/controller/PageController",
-    "udina/sample/mdq_re/controller/ext/EditFlow",
-    "udina/sample/mdq_re/controller/ext/MessageHandler",
-    "udina/sample/mdq_re/controller/ext/FileViewer",
-    "udina/sample/mdq_re/controller/ext/AnnotationHelper",
+    "mdq_re/controller/PageController",
+    "mdq_re/controller/ext/EditFlow",
+    "mdq_re/controller/ext/MessageHandler",
+    "mdq_re/controller/ext/FileViewer",
+    "mdq_re/controller/ext/AnnotationHelper",
     "sap/ui/model/json/JSONModel",
     'sap/ui/core/library'
 ], function (PageController, EditFlow, MessageHandler, FileViewer, AnnotationHelper, JSONModel,
@@ -11,7 +11,7 @@ sap.ui.define([
     "use strict";
     var ValueState = coreLibrary.ValueState;
 
-    return PageController.extend("udina.sample.mdq_re.controller.ObjectPage", {
+    return PageController.extend("mdq_re.controller.ObjectPage", {
 
         // add used extensions
         editFlow: EditFlow,

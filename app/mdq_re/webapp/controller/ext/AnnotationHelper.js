@@ -9,12 +9,12 @@ sap.ui.define([
      * @class A controller extension offering Annotation helpers as mixin
      * @implements sap.fe.core.controllerextensions.AnnotationHelper
      *
-     * @name udina.sample.mdq_re.controller.ext.AnnotationHelper
+     * @name mdq_re.controller.ext.AnnotationHelper
      * @hideconstructor
      * @public
      * @since 1.2.0
      */
-    return ControllerExtension.extend("udina.sample.mdq_re.controller.ext.AnnotationHelper", {
+    return ControllerExtension.extend("mdq_re.controller.ext.AnnotationHelper", {
 
         // this section allows to extend lifecycle hooks or override public methods of the base controller
         /*
@@ -44,7 +44,7 @@ sap.ui.define([
             if (!this._pQuickView) {
                 this._pQuickView = Fragment.load({
                     id: oView.getId(),
-                    name: "udina.sample.mdq_re.view.fragment.QuickView",
+                    name: "mdq_re.view.fragment.QuickView",
                     controller: this
                 }).then(function (oQuickView) {
                     oView.addDependent(oQuickView);

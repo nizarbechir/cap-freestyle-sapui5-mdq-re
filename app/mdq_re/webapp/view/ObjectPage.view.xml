@@ -1,5 +1,5 @@
 <mvc:View
-    controllerName="udina.sample.mdq_re.controller.ObjectPage"
+    controllerName="mdq_re.controller.ObjectPage"
     displayBlock="true"
     xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
     xmlns="sap.m"

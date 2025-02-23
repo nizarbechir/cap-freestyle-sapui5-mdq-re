@@ -1,10 +1,10 @@
 sap.ui.define([
-    "udina/sample/mdq_re/controller/BaseController",
+    "mdq_re/controller/BaseController",
     "sap/ui/model/json/JSONModel"
 ], function (BaseController, JSONModel) {
     "use strict";
 
-    return BaseController.extend("udina.sample.mdq_re.controller.App", {
+    return BaseController.extend("mdq_re.controller.App", {
 
         onInit: function () {
             var oViewModel,

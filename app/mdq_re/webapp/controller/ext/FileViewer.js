@@ -11,12 +11,12 @@ sap.ui.define([
     /**
      * @class A controller extension offering FileViewer features as mixin
      *
-     * @name udina.sample.mdq_re.controller.ext.FileViewer
+     * @name mdq_re.controller.ext.FileViewer
      * @hideconstructor
      * @public
      * @since 1.2.0
      */
-    return ControllerExtension.extend("udina.sample.mdq_re.controller.ext.FileViewer", {
+    return ControllerExtension.extend("mdq_re.controller.ext.FileViewer", {
 
         _oPDFViewer: undefined,
 

@@ -1,11 +1,11 @@
 sap.ui.define([
-    "udina/sample/mdq_re/controller/PageController",
+    "mdq_re/controller/PageController",
     "sap/ui/generic/app/navigation/service/NavigationHandler",
     "sap/ui/model/Sorter"
 ], function (PageController, NavigationHandler, Sorter) {
     "use strict";
 
-    return PageController.extend("udina.sample.mdq_re.controller.ListReport", {
+    return PageController.extend("mdq_re.controller.ListReport", {
 
         onInit: function () {
             // shortcut
@@ -93,7 +93,7 @@ sap.ui.define([
 
         onCrossAppNavigation: function () {
             //(sSemanticObject, sActionName, vParameters?, oAppData?, fnError?)
-            this.oNavigationHandler.navigate("UDINATest", "display", {}, { customData: this._oAppState }, undefined);
+            this.oNavigationHandler.navigate("Test", "display", {}, { customData: this._oAppState }, undefined);
         },
 
         /**

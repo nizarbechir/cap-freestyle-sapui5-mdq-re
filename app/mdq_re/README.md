@@ -10,7 +10,7 @@
 |**Service URL**<br>http://localhost:4004/mock/
 |**Module Name**<br>mdq_re|
 |**Application Title**<br>SAPUI5 Deep Create|
-|**Namespace**<br>udina.sample|
+|**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon_dark|
 |**UI5 Version**<br>1.108.0|
 |**Enable Code Assist Libraries**<br>False|

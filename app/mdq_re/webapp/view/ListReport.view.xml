@@ -1,4 +1,4 @@
-<mvc:View controllerName="udina.sample.mdq_re.controller.ListReport" displayBlock="true" 
+<mvc:View controllerName="mdq_re.controller.ListReport" displayBlock="true" 
     xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f" xmlns:mvc="sap.ui.core.mvc" 
     xmlns:smartVariants="sap.ui.comp.smartvariants"
     xmlns:smartFilterBar="sap.ui.comp.smartfilterbar" xmlns:smartTable="sap.ui.comp.smarttable">
@@ -7,7 +7,7 @@
             <f:DynamicPageTitle>
                 <f:heading>
                     <smartVariants:SmartVariantManagement id="__SVM01" entitySet="Rule"
-						persistencyKey="udina.sample.mdq_re.view.ListReport" showShare="true" 
+						persistencyKey="mdq_re.view.ListReport" showShare="true" 
                         showExecuteOnSelection="true" />
                 </f:heading>
             </f:DynamicPageTitle>
@@ -15,7 +15,7 @@
         <f:header>
         	<f:DynamicPageHeader>
                 <smartFilterBar:SmartFilterBar id="smartFilterBar" smartVariant="__SVM01" 
-                    persistencyKey="udina.sample.mdq_re.view.ListReport.FilterBar"
+                    persistencyKey="mdq_re.view.ListReport.FilterBar"
                     entitySet="Rule" liveMode="true"
                     enableBasicSearch="true" basicSearchFieldName="Rule"
                     useDateRangeType="true" search=".onSearch"/>
@@ -25,7 +25,7 @@
             <smartTable:SmartTable id="smartTable" header="{i18n>Rules}" 
                 tableType="ResponsiveTable" 
                 smartVariant="__SVM01" 
-                persistencyKey="udina.sample.mdq_re.view.ListReport.SmartTable"
+                persistencyKey="mdq_re.view.ListReport.SmartTable"
 				entitySet="Rule" enableAutoBinding="true" enableAutoColumnWidth="false"                
                 smartFilterId="smartFilterBar" showRowCount="true" 
                 initiallyVisibleFields="ID,description,isActive,priority,errorDescription,errorType,errorDescription,andBinaryOperator"

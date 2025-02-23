@@ -8,12 +8,12 @@ sap.ui.define([
      * @class A controller extension offering Message handling features as mixin
      * @implements sap.fe.core.controllerextensions.MessageHandler
      *
-     * @name udina.sample.mdq_re.controller.ext.MessageHandler
+     * @name mdq_re.controller.ext.MessageHandler
      * @hideconstructor
      * @public
      * @since 1.2.0
      */
-    return ControllerExtension.extend("udina.sample.mdq_re.controller.ext.MessageHandler", {
+    return ControllerExtension.extend("mdq_re.controller.ext.MessageHandler", {
 
         onMessagePopoverPress: function (oEvent) {
             this.showMessageDialog(oEvent.getSource());
@@ -32,7 +32,7 @@ sap.ui.define([
             if (!this._pMessagePopover) {
                 this._pMessagePopover = Fragment.load({
                     id: oView.getId(),
-                    name: "udina.sample.mdq_re.view.fragment.MessagePopover"
+                    name: "mdq_re.view.fragment.MessagePopover"
                 }).then(function (oMessagePopover) {
                     oView.addDependent(oMessagePopover);
                     return oMessagePopover;

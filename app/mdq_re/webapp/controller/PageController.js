@@ -1,12 +1,12 @@
 sap.ui.define([
-    "udina/sample/mdq_re/controller/BaseController",
-    "udina/sample/mdq_re/controller/ext/EditFlow",
-    "udina/sample/mdq_re/controller/ext/MessageHandler",
-    "udina/sample/mdq_re/model/formatter",
+    "mdq_re/controller/BaseController",
+    "mdq_re/controller/ext/EditFlow",
+    "mdq_re/controller/ext/MessageHandler",
+    "mdq_re/model/formatter",
 ], function (BaseController, EditFlow, MessageHandler, formatter) {
     "use strict";
 
-    return BaseController.extend("udina.sample.mdq_re.controller.PageController", {
+    return BaseController.extend("mdq_re.controller.PageController", {
 
         formatter: formatter,
 
