@@ -1,0 +1,491 @@
+<mvc:View
+    controllerName="udina.sample.mdq_re.controller.ObjectPage"
+    displayBlock="true"
+    xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartForm="sap.ui.comp.smartform"
+    xmlns:smartField="sap.ui.comp.smartfield"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:upload="sap.m.upload"
+    xmlns:uxap="sap.uxap"
+>
+    <l:DynamicSideContent
+        id="DynamicSideContent"
+        sideContentFallDown="BelowM"
+        sideContentPosition="End"
+        containerQuery="true"
+        showSideContent="false"
+        breakpointChanged=".onSideContentBreakpointChanged"
+    >
+        <l:mainContent>
+            <uxap:ObjectPageLayout
+                id="ObjectPageLayout"
+                flexEnabled="true"
+                upperCaseAnchorBar="false"
+                busy="{ui>/busy}"
+                busyIndicatorDelay="0"
+                showHeaderContent="{= !${ui>/isEditable}}"
+                showFooter="{ui>/isEditable}"
+            >
+                <uxap:headerTitle>
+                    <uxap:ObjectPageDynamicHeaderTitle
+                        id="ObjectPageHeader"
+                        areaShrinkRatio="1:0:1.6"
+                    >
+                        <uxap:actions>
+                            <uxap:ObjectPageHeaderActionButton
+                                text="Public Profile"
+                                icon="sap-icon://edit"
+                                tooltip="edit"
+                                press=".onEditPress"
+                            />
+                            <uxap:ObjectPageHeaderActionButton
+                                text="Check Rule Violations"
+                                icon="sap-icon://survey"
+                                tooltip="checkRuleViolations"
+                                press=".checkRuleViolations"
+                            />
+                            <Button
+                                id="SideContentToggleButton"
+                                icon="sap-icon://detail-view"
+                                press=".onSideContentToggle"
+                            />
+                        </uxap:actions>
+                        <uxap:expandedHeading>
+                            <Title
+                                text="{= ${ui>/isEditable} ? ${i18n>SalesOrderCreate} : ${description}}"
+                                wrapping="true"
+                                level="H2"
+                            />
+                        </uxap:expandedHeading>
+                        <uxap:snappedHeading>
+                            <FlexBox
+                                renderType="Bare"
+                                alignItems="Center"
+                            >
+                                <Avatar
+                                    class="sapUiSmallMarginEnd"
+                                    initials="{description}"
+                                    src="sap-icon://checklist"
+                                    visible="{= !${ui>/isEditable}}"
+                                    displayShape="Square"
+                                    displaySize="S"
+                                />
+                                <VBox renderType="Bare">
+                                    <Title
+                                        class="sapUiTinyMarginBottom"
+                                        text="{= ${ui>/isEditable} ? ${i18n>SalesOrderCreate} : ${description}}"
+                                        wrapping="true"
+                                        level="H2"
+                                    />
+                                </VBox>
+                            </FlexBox>
+                        </uxap:snappedHeading>
+                        <uxap:snappedTitleOnMobile>
+                            <Title
+                                text="{= ${ui>/isEditable} ? ${i18n>SalesOrderCreate} : ${description}}"
+                                wrapping="true"
+                                level="H2"
+                            />
+                        </uxap:snappedTitleOnMobile>
+                    </uxap:ObjectPageDynamicHeaderTitle>
+                </uxap:headerTitle>
+                <uxap:headerContent>
+                    <FlexBox
+                        wrap="Wrap"
+                        fitContainer="false"
+                        alignItems="Stretch"
+                        visible="{= !${ui>/isEditable}}"
+                    >
+                        <Avatar
+                            class="sapUiSmallMarginEnd sapUiSmallMarginBottom"
+                            src="sap-icon://checklist"
+                            initials="{description}"
+                            displayShape="Square"
+                            displaySize="S"
+                        />
+                        <l:VerticalLayout class="sapUiMediumMarginEnd">
+                            <ObjectAttribute
+                                binding="{entity}"
+                                ariaHasPopup="Dialog"
+                                id="SoldToParty"
+                                class="sapUiTinyMarginBottom"
+                                title="{i18n>Entity}"
+                                text="{name}"
+                                active="true"
+                                data:title="{i18n>SoldToParty}"
+                                press=".annotationHelper.onQuickView"
+                            />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout class="sapUiMediumMarginEnd">
+                            <l:layoutData>
+                                <uxap:ObjectPageHeaderLayoutData
+                                    visibleS="false"
+                                />
+                            </l:layoutData>
+                            <Title
+                                class="sapUiTinyMarginBottom"
+                                text="{i18n>Status}"
+                                level="H3"
+                            />
+                            <ObjectStatus
+                                class="sapUiTinyMarginBottom"
+                                title="Rule Status"
+                                text="{= ${isActive} ? ${i18n>Active} : ${Inactive}}"
+                                state="{= ${isActive} ? 'Success' : 'Error'}"
+                            />
+                            <ObjectStatus
+                                class="sapUiTinyMarginBottom"
+                                title="Analyse Status"
+                                text="Complete"
+                                state="Success"
+                            />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout class="sapUiMediumMarginEnd">
+                            <Title
+                                class="sapUiTinyMarginBottom"
+                                text="{i18n>Status}"
+                                level="H3"
+                            />
+                            <ObjectStatus
+                                class="sapMObjectStatusLarge"
+                                text="Delivery"
+                                state="Success"
+                            />
+                        </l:VerticalLayout>
+                        <l:VerticalLayout class="sapUiMediumMarginEnd">
+                            <Title
+                                class="sapUiTinyMarginBottom"
+                                text="{i18n>Number of incompliant Records}"
+                                level="H3"
+                            />
+                            <ObjectNumber
+                                class="sapMObjectNumberLarge"
+                                number="{violations_count}"
+                                unit="Records"
+                                state="Error"
+                            />
+                        </l:VerticalLayout>
+                    </FlexBox>
+                </uxap:headerContent>
+                <uxap:sections>
+                    <uxap:ObjectPageSection
+                        id="SalesOrderHead"
+                        title="{i18n>GeneralInformation}"
+                        titleUppercase="false"
+                    >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <smartForm:SmartForm
+                                    id="SmartForm"
+                                    editable="{ui>/isEditable}"
+                                    data:defaultCheckBoxDisplayBehaviour="OnOff"
+                                    data:defaultDropDownDisplayBehaviour="idAndDescription"
+                                >
+                                    <smartForm:layout>
+                                        <smartForm:ColumnLayout
+                                            columnsM="2"
+                                            columnsL="3"
+                                            columnsXL="4"
+                                        />
+                                    </smartForm:layout>
+                                    <smartForm:Group title="">
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="CustomerPurchaseOrderDate"
+                                                value="{description}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="PurchaseOrderByShipToParty"
+                                                value="{entity_name}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="isActive"
+                                                value="{isActive}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="errorType"
+                                                value="{errorType}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="priority"
+                                                value="{priority}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="errorDescription"
+                                                value="{errorDescription}"
+                                            />
+                                        </smartForm:GroupElement>
+                                        <smartForm:GroupElement>
+                                            <smartField:SmartField
+                                                id="andBinaryOperator"
+                                                value="{andBinaryOperator}"
+                                            />
+                                        </smartForm:GroupElement>
+                                    </smartForm:Group>
+                                </smartForm:SmartForm>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                    <uxap:ObjectPageSection
+                        id="SalesOrderItems"
+                        title="{i18n>Items}"
+                        titleUppercase="false"
+                        showTitle="false"
+                    >
+                        <uxap:subSections>
+                            <uxap:ObjectPageSubSection>
+                                <Table
+                                    id="itemTable"
+                                    width="auto"
+                                    items="{conditions}"
+                                    mode="{= ${ui>/isEditable} ? 'Delete' : 'None' }"
+                                    delete=".onDeleteItem"
+                                    updateFinished=".onItemUpdateFinished"
+                                >
+                                    <headerToolbar>
+                                        <Toolbar>
+                                            <Title
+                                                text="{i18n>Conditions} ({view>/itemCount})"
+                                                titleStyle="H4"
+                                            />
+                                            <ToolbarSpacer />
+                                            <Button
+                                                text="{i18n>Add}"
+                                                visible="{ui>/isEditable}"
+                                                press=".onAddItem"
+                                            />
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column width="50%">
+                                            <Label text="{i18n>Attribute}" />
+                                        </Column>
+                                        <Column width="25%">
+                                            <Label text="{i18n>Operator}" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="{i18n>Value}" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <ComboBox
+                                                editable="{ui>/isEditable}"
+                                                width="100%"
+                                                id="idComboBox"
+                                                showSecondaryValues="true"
+                                                items="{
+                                                path: '/Element',
+                                                sorter: { path: 'parent_name' }
+                                            }"
+                                                change="handleChangeElement"
+                                                selectedKey="{attribute}"
+                                            >
+                                                <core:ListItem
+                                                    text="{name}"
+                                                    key="{name}"
+                                                    additionalText="{parent_name}"
+                                                />
+                                            </ComboBox>
+                                            <Select
+                                                width="100%"
+                                                forceSelection="false"
+                                                showSecondaryValues="true"
+                                                editable="{ui>/isEditable}"
+                                                selectedKey="{operator_name}"
+                                                items="{
+                                                path: '/Condition_operators'
+                                            }"
+                                            >
+                                                <core:ListItem
+                                                    text="{name}"
+                                                    key="{name}"
+                                                    additionalText="{descr}"
+                                                />
+                                            </Select>
+                                            <Input
+                                                id="ConditionsValue"
+                                                editable="{ui>/isEditable}"
+                                                value="{value}"
+                                            />
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </uxap:ObjectPageSubSection>
+                            <uxap:ObjectPageSubSection>
+                                <Table
+                                    id="actionsTable"
+                                    width="auto"
+                                    items="{actions}"
+                                    mode="{= ${ui>/isEditable} ? 'Delete' : 'None' }"
+                                    delete=".onDeleteItem"
+                                    updateFinished=".onActionsUpdateFinished"
+                                >
+                                    <headerToolbar>
+                                        <Toolbar>
+                                            <Title
+                                                text="{i18n>Actions} ({view>/actionsCount})"
+                                                titleStyle="H4"
+                                            />
+                                            <ToolbarSpacer />
+                                            <Button
+                                                text="{i18n>Add}"
+                                                visible="{ui>/isEditable}"
+                                                press=".onAddItem"
+                                            />
+                                        </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column width="50%">
+                                            <Label text="{i18n>Attribute}" />
+                                        </Column>
+                                        <Column width="25%">
+                                            <Label text="{i18n>Operator}" />
+                                        </Column>
+                                        <Column>
+                                            <Label text="{i18n>Value}" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem>
+                                            <ComboBox
+                                                editable="{ui>/isEditable}"
+                                                width="100%"
+                                                id="idActionComboBox"
+                                                showSecondaryValues="true"
+                                                items="{
+                                                path: '/Element',
+                                                sorter: { path: 'parent_name' }
+                                            }"
+                                                change="handleChangeElement"
+                                                selectedKey="{attribute}"
+                                            >
+                                                <core:ListItem
+                                                    text="{name}"
+                                                    key="{name}"
+                                                    additionalText="{parent_name}"
+                                                />
+                                            </ComboBox>
+                                            <Select
+                                                width="100%"
+                                                forceSelection="false"
+                                                showSecondaryValues="true"
+                                                editable="{ui>/isEditable}"
+                                                selectedKey="{operator_name}"
+                                                items="{
+                                                path: '/Action_operators'
+                                            }"
+                                            >
+                                                <core:ListItem
+                                                    text="{name}"
+                                                    key="{name}"
+                                                    additionalText="{descr}"
+                                                />
+                                            </Select>
+                                            <Input
+                                                id="ActionsValue"
+                                                editable="{ui>/isEditable}"
+                                                value="{value}"
+                                            />
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                            </uxap:ObjectPageSubSection>
+                        </uxap:subSections>
+                    </uxap:ObjectPageSection>
+                </uxap:sections>
+                <uxap:footer>
+                    <OverflowToolbar>
+                        <Button
+                            icon="sap-icon://alert"
+                            text="{= ${message>/}.length }"
+                            type="Emphasized"
+                            visible="{=${message>/}.length > 0}"
+                            busyIndicatorDelay="0"
+                            press=".messageHandler.onMessagePopoverPress"
+                        />
+                        <ToolbarSpacer />
+                        <ToolbarSpacer />
+                        <Button
+                            text="{i18n>Create}"
+                            type="Emphasized"
+                            busyIndicatorDelay="0"
+                            press=".editFlow.onSave"
+                        />
+                        <!--<Button text="{i18n>SavePreProcessed}" press=".editFlow.onSavePreProcessed"/>-->
+                        <Button
+                            text="{i18n>Cancel}"
+                            press=".editFlow.onCancel"
+                        />
+                    </OverflowToolbar>
+                </uxap:footer>
+            </uxap:ObjectPageLayout>
+        </l:mainContent>
+        <l:sideContent>
+            <Page
+                enableScrolling="true"
+            >
+                <headerContent>
+                    <Button
+                        id="SideContentCloseButton"
+                        text="{i18n>Close}"
+                        press=".onSideContentClose"
+                    />
+                </headerContent>
+                <Table
+                    items="{
+                    path: 'violations',
+                    sorter: {
+                        path: 'primaryKey'
+                    }
+                }"
+                >
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Violations" level="H2"></Title>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="PK" />
+                        </Column>
+                        <Column>
+                            <Text text="action" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem
+                            vAlign="Middle"
+                            type="Active"
+                        >
+                            <cells>
+                                <Text
+                                    text="{primaryKey}"
+                                    wrapping="false"
+                                />
+                                <Text
+                                    text="{action_ID}"
+                                    wrapping="false"
+                                />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </Page>
+        </l:sideContent>
+    </l:DynamicSideContent>
+</mvc:View>

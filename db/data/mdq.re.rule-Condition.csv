@@ -1,0 +1,2 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,attribute,operator_name,value,parent_ID
+2f8cea22-bdce-4df1-b754-85f80cfae377,2025-02-17T14:35:40.478Z,anonymous,2025-02-17T14:35:40.478Z,anonymous,SalesOrder,NE,5,cc2c3d0f-ecbb-4148-a3d8-bbe5e30439a8

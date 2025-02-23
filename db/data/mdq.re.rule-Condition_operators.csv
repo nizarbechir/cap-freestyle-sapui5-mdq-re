@@ -1,0 +1,7 @@
+name,descr
+EQ,Equal
+GE,Greater Than Or Equal
+GT,Greater Than
+LE,Less Than Or Equal
+LT,Less Than
+NE,NotEqual

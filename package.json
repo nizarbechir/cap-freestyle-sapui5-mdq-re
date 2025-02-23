@@ -1,0 +1,72 @@
+{
+  "name": "capruler",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/hana": "^1",
+    "@sap-cloud-sdk/connectivity": "^3.26.0",
+    "@sap-cloud-sdk/http-client": "^3.26.0",
+    "@sap-cloud-sdk/resilience": "^3.26.0",
+    "@sap/cds": "^8",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
+    "@sap/textbundle": "^5.3.0",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.8.0",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "sapux": [
+    "app/admin-books",
+    "app/browse"
+  ],
+  "cds": {
+    "requires": {
+      "BusinessPartnerA2X": {
+        "kind": "odata-v2",
+        "model": "srv/external/BusinessPartnerA2X",
+        "[sandbox]": {
+          "credentials": {
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/",
+            "headers": {
+              "APIKey": "TZBMw8LAk0MAo3bJt1GkBV3nZtzN04Ri"
+            }
+          }
+        }
+      },
+      "SalesOrderA2X": {
+        "kind": "odata-v2",
+        "model": "srv/external/SalesOrderA2X",
+        "[sandbox]": {
+          "credentials": {
+            "url": "https://sandbox.api.sap.com/s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV/",
+            "headers": {
+              "APIKey": "TZBMw8LAk0MAo3bJt1GkBV3nZtzN04Ri"
+            }
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "apihub_sandbox",
+            "path": "s4hanacloud/sap/opu/odata/sap/API_SALES_ORDER_SRV"
+          }
+        },
+        "csrf": true,
+        "csrfInBatch": true
+      },
+      "[hybrid]": {
+        "db": "hana"
+      }
+    },
+    "sql": {
+      "native_hana_associations": false
+    }
+  }
+}

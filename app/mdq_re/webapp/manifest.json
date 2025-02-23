@@ -1,0 +1,187 @@
+{
+    "_version": " 1.49.0",
+    "sap.app": {
+        "id": "udina.sample.mdq_re",
+        "type": "application",
+        "i18n": {
+            "bundleUrl": "i18n/i18n.properties",
+            "supportedLocales": [
+                "",
+                "de",
+                "en"
+            ],
+            "fallbackLocale": ""
+        },
+        "applicationVersion": {
+            "version": "0.1.4"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "dataSources": {
+            "mainService": {
+                "uri": "/v2/rule/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "offline": false,
+        "crossNavigation": {
+            "inbounds": {
+                "fe-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "UDINASalesOrder",
+                    "action": "manage",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubTitle}}",
+                    "info": "{{flpInfo}}",
+                    "icon": "sap-icon://puzzle"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "handleValidation": true,
+        "resources": {
+            "js": [],
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "dependencies": {
+            "minUI5Version": "1.108.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ui.layout": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.uxap": {},
+                "sap.fe.placeholder": {}
+            }
+        },
+        "config": {
+            "fullWidth": true
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "udina.sample.mdq_re.i18n.i18n",
+                    "supportedLocales": [
+                        "",
+                        "de",
+                        "en"
+                    ],
+                    "fallbackLocale": ""
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "useBatch": false
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "udina.sample.mdq_re.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "list",
+                    "target": "list"
+                },
+                {
+                    "pattern": "object({objectId}):?query:",
+                    "name": "object",
+                    "target": "object"
+                }
+            ],
+            "targets": {
+                "list": {
+                    "isHome": true,
+                    "viewId": "list",
+                    "viewName": "ListReport",
+                    "title": "{{SalesOrders}}",
+                    "viewLevel": 1,
+                    "placeholder": {
+						"html": "sap/fe/placeholder/view/PlaceholderLR.fragment.html",
+						"autoClose": true
+					}
+                },
+                "object": {
+                    "viewId": "object",
+                    "viewName": "ObjectPage",
+                    "title": "{{SalesOrder}}",
+                    "viewLevel": 2,
+                    "placeholder": {
+						"html": "sap/fe/placeholder/view/PlaceholderOP.fragment.html",
+						"autoClose": true
+					}
+                },
+                "objectNotFound": {
+                    "viewName": "ObjectNotFound",
+                    "viewId": "objectNotFound",
+                    "title": "{{ObjectNotFound}}",
+                    "viewLevel": 3
+                },
+                "notFound": {
+                    "viewName": "NotFound",
+                    "viewId": "notFound",
+                    "title": "{{NotFound}}",
+                    "viewLevel": 3
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "udina.sample.mdq_re.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

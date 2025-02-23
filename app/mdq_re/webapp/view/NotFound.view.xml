@@ -1,0 +1,9 @@
+<mvc:View controllerName="udina.sample.mdq_re.controller.NotFound" 
+    xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc">    
+    <IllustratedMessage illustrationType="sapIllus-PageNotFound"
+        title="{i18n>NotFound.text}" description="{i18n>NotFound.description}">
+        <additionalContent>
+            <Button text="{i18n>NotFound.link}" type="Emphasized" press=".onNavBack"/>
+        </additionalContent>
+    </IllustratedMessage>      
+</mvc:View>

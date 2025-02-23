@@ -1,0 +1,2 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,description,isActive,entity_name,errorType,priority,errorDescription,andBinaryOperator,violations_count
+cc2c3d0f-ecbb-4148-a3d8-bbe5e30439a8,2025-02-17T14:35:40.478Z,anonymous,2025-02-17T14:35:40.478Z,anonymous,"Rule number _36",true,"SalesOrderA2XSampleService.A_SalesOrder",Error,High,"The record(s) should be complaint to aspect _2440",true,0

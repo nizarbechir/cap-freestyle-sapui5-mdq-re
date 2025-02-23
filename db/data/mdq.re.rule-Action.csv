@@ -1,0 +1,2 @@
+ID,createdAt,createdBy,modifiedAt,modifiedBy,attribute,operator_name,value,parent_ID
+711e4998-a65d-487f-985e-04b83f7021f8,2025-02-17T14:35:40.478Z,anonymous,2025-02-17T14:35:40.478Z,anonymous,CustomerTaxClassification7,EQ,4,cc2c3d0f-ecbb-4148-a3d8-bbe5e30439a8
