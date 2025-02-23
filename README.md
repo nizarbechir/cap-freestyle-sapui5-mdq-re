@@ -7,6 +7,13 @@ This CAP-based SAAS solution analyzes S/4HANA data for quality and compliance, e
 
 **CAP Freestyle SAPUI5 MDQ_RE** leverages the SAP Cloud Application Programming Model (CAP) to provide a scalable, enterprise-ready solution. The application integrates with S/4HANA systems to validate data against user-defined quality and compliance rules. The repository follows a standard CAP layout to support rapid development and deployment.
 
+- **List of the rules created by Key USER**: Displays Rules to be checked against the data in the system.
+    ![Master_veiw](screenshots/v01/master.png)
+- **List of the rules created by Key USER**: Displays key booking details.
+    ![Detail_veiw](screenshots/v01/detail.png)
+- **List of the rules created by Key USER**: Displays key booking details.
+    ![Detail-Detail_veiw](screenshots/v01/detail-detail.png)
+
 ## Repository URL
 
 Clone the repository from GitHub:  
@@ -34,3 +41,5 @@ Clone the repository from GitHub:
    ```bash
    git clone https://github.com/nizarbechir/cap-freestyle-sapui5-mdq-re.git
    cd cap-freestyle-sapui5-mdq-re
+   npm install
+   cds watch
